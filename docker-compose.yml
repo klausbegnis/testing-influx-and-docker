@@ -1,0 +1,28 @@
+services:
+  update_db:
+    build:
+      context: ./update_app
+      dockerfile: ./Dockerfile
+    networks:
+      - db_influx_ntw
+    depends_on:
+      - influxdb
+    #restart: unless-stopped
+  
+  influxdb:
+    image: influxdb:2.6-alpine
+    volumes:
+      - influxdbv2:/var/lib/influxdb2:rw
+    ports:
+      - "8086:8086"
+    networks:
+      - db_influx_ntw
+    #restart: unless-stopped
+  
+networks:
+  db_influx_ntw:
+    name: db_influx_ntw
+    driver: bridge
+
+volumes:
+  influxdbv2:

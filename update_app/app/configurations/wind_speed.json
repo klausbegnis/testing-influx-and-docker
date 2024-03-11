@@ -1,0 +1,5 @@
+{
+    "name" : "wind_speed",
+    "tags" : ["location", "filtered"],
+    "fields" : ["sensor_hall_1","sensor_hall_2","sensor_hall_3"]
+}
